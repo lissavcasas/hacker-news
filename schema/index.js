@@ -1,13 +1,14 @@
 const {makeExecutableSchema} = require('graphql-tools');
+const LinkDef = require('./entities/Link'); //import entity Link
 
 //Create query. Define Type - String.  Es el conjunto de endpoints a exponer
 const rootQuery = `
 type Query {
-  allWords: [String]
+  allLinks: [Link!]
 }
 `;
 
 // Generate the schema object from your types definition
 module.exports = makeExecutableSchema({
-  typeDefs: [rootQuery] //define types
+  typeDefs: [rootQuery, LinkDef], //define types, add entitities
 });
